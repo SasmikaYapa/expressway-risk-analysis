@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Southern Expressway Risk Analysis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(0,0,0,0.9);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            margin: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: yellow;
+        }
+
+     .hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url("C:\Users\User\OneDrive\Pictures\1591870892-New-interchange-on-Southern-Expressway-at-Bedigama-L.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    padding-top: 200px;
+}
+
+        .hero h1 {
+            font-size: 55px;
+            animation: fadeInDown 2s;
+        }
+
+        .hero p {
+            font-size: 22px;
+        }
+
+        .btn {
+            background: yellow;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: black;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px;
+            text-align: center;
+        }
+
+        .section:nth-child(even) {
+            background: #f4f4f4;
+        }
+
+        img {
+            width: 80%;
+            border-radius: 15px;
+            box-shadow: 0 0 20px gray;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Animation */
+        @keyframes fadeInDown {
+            from {opacity:0; transform:translateY(-50px);}
+            to {opacity:1; transform:translateY(0);}
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#intro">Expressway</a>
+    <a href="#risk">Risk Map</a>
+    <a href="#method">Methodology</a>
+    <a href="#results">Results</a>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero">
+    <h1>GIS Road Risk Analysis</h1>
+    <p>Southern Expressway | Gelanigama to Pinnaduwa</p>
+    <a href="#risk" class="btn">View Risk Map</a>
+</section>
+
+<!-- Introduction -->
+<section id="intro" class="section">
+    <h1>Southern Expressway – Sri Lanka</h1>
+    <img src="C:\Users\User\OneDrive\Pictures\map_exp_netwrk.jpg">
+    <p>
+        The Southern Expressway (E01) is Sri Lanka’s first expressway connecting Colombo with
+        Galle, Matara and Hambantota. It was constructed to reduce travel time, improve
+        transportation efficiency and support economic development in the Southern region.
+        The Gelanigama to Pinnaduwa section includes major interchanges such as Dodangoda,
+        Welipenna, Kurundugahahetekma and Baddegama.
+    </p>
+</section>
+
+<!-- Risk Map -->
+<section id="risk" class="section">
+    <h1>Road Risk Map (Gelanigama to Pinnaduwa)</h1>
+    <img src="C:\Users\User\OneDrive\Pictures\Screenshots\Screenshot 2026-03-30 001018.png">
+    <p>Yellow – Low Risk | Orange – Moderate Risk | Red – High Risk</p>
+</section>
+
+<!-- Methodology -->
+<section id="method" class="section">
+    <h1>Methodology</h1>
+    <p>• Expressway centerline extracted from OpenStreetMap</p>
+    <p>• Points generated at 100m intervals</p>
+    <p>• Chainage calculated for each point</p>
+    <p>• IRI values assigned using chainage</p>
+    <p>• Road curvature calculated using angle</p>
+    <p><b>Risk = 0.7 (IRI/5) + 0.3 (Angle/180)</b></p>
+    <p>• Risk classified using Natural Breaks</p>
+</section>
+
+<!-- Results -->
+<section id="results" class="section">
+    <h1>Results</h1>
+    <p>High-risk areas were identified near sharp curves and rough pavement sections.</p>
+    <p>Moderate-risk areas were observed in transition curve sections.</p>
+    <p>Low-risk areas were found in straight road segments with good pavement condition.</p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>Final Year GIS Project | Road Risk Analysis | Southern Expressway</p>
+</footer>
+
+<script>
+    // Scroll Animation
+    const sections = document.querySelectorAll('.section');
+    window.addEventListener('scroll', () => {
+        sections.forEach(sec => {
+            const position = sec.getBoundingClientRect().top;
+            if(position < window.innerHeight - 100){
+                sec.style.opacity = 1;
+                sec.style.transform = "translateY(0)";
+            }
+        });
+    });
+
+    sections.forEach(sec => {
+        sec.style.opacity = 0;
+        sec.style.transform = "translateY(50px)";
+        sec.style.transition = "all 1s";
+    });
+</script>
+
+</body>
+</html>
